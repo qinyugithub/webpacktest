@@ -48,5 +48,10 @@ module.exports = {
   },
   plugins:[
     new HtmlWebpackPlugin({template:'./index.html'})
-  ]
+  ],
+  // resolve: {
+  //   alias:{
+  //     "vue$":"vue/dist/vue.js"
+  //   }
+  // }
 };
