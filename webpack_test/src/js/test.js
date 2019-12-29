@@ -4,16 +4,32 @@ import '../css/test.less'
 import '../css/test.scss'
 import 'bootstrap/dist/css/bootstrap.css'
 
-// import vue from 'vue'
-import Vue from 'vue/dist/vue.js'
+import Vue from 'vue'
+// import Vue from 'vue/dist/vue.js'
+
+import login from '../login.vue'
 
 console.log("success !");
 console.log(foo(4));
+
+
+// var login = {
+//     template:'<h1>这里是login组件，使用网页中的形式创建出来的组件</h1>'
+// }
+
+
+
 
 var vm = new Vue({
     el:'#app',
     data:{
         msg:'123'
+    },
+    // components:{
+    //     login
+    // }
+    render: function (createElements){
+        return createElements(login);
     }
 })
 
@@ -36,3 +52,7 @@ console.log(Person.info)
 //解决方式：1 修改node_modules vue dist package.json(main属性)
 //         2 更换导入的路径
 //         3 在 webpack.config.js 文件中配置 vue 被导入时的包路径
+
+
+//如果要使用 runtime-only 的方式来渲染组件，则需要创建 vue 文件，webpack 无法解析，需要安装第三方loader
+// cnpm i vue-loader vue-template-compiler -D (前者依赖后者)

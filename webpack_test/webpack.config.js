@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   mode:'development',
@@ -37,7 +37,8 @@ module.exports = {
         ]
         //可以使用传参的方式来配置loader: use:'url-loader?limit=7631&name=[hash:8]-[name].[ext]'
       },
-      { test:/\.js$/, use:'babel-loader',exclude: /node_modules/ }
+      { test:/\.js$/, use:'babel-loader',exclude: /node_modules/ },
+      { test:/\.vue$/, use:'vue-loader'}
     ]
   },
   devServer:{
@@ -47,7 +48,8 @@ module.exports = {
     hot:true
   },
   plugins:[
-    new HtmlWebpackPlugin({template:'./index.html'})
+    new HtmlWebpackPlugin({template:'./index.html'}),
+    new VueLoaderPlugin()
   ],
   // resolve: {
   //   alias:{
