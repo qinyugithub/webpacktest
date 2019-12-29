@@ -36,7 +36,8 @@ module.exports = {
           }
         ]
         //可以使用传参的方式来配置loader: use:'url-loader?limit=7631&name=[hash:8]-[name].[ext]'
-      }
+      },
+      { test:/\.js$/, use:'babel-loader',exclude: /node_modules/ }
     ]
   },
   devServer:{
